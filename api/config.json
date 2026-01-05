@@ -15,7 +15,7 @@
 			},
 			"title": "🛡️ Obrana vesnice před cechovním worldbossem",
 			"color": 15844367,
-			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVůdce žádá vaši krev a odvahu! Nastal čas ochránit naší vesnici od té prašivé havěti.\n\n🗡️** Očekávaný čas střetu:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n❌ *Neustupujte ani o krok! Za vůdce a za domov! Doufám ve vaši účast!*\n\u200b",
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVůdce žádá vaši krev a odvahu! Nastal čas ochránit naší vesnici od té prašivé havěti.\n\n🗡️** Očekávaný čas střetu:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n❌ *Neustupujte ani o krok! Za vůdce a za domov! Doufám ve vaši účast!*",
 			"fields": []
 		},
 		"week_dung": {
@@ -25,7 +25,7 @@
 			},
 			"title": "⚔️ Týdenní výprava do cechovního dungeonu",
 			"color": 10027008,
-			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nStíny v hlubinách se opět prodlužují. Nastal čas vyčistit dungeon a přinést slávu našemu praporu!\n\n**🗡️ Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Neúspěch se trestá smrtí. Sláva Impériu! Doufám ve vaši účast!*\n\u200b",
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nStíny v hlubinách se opět prodlužují. Nastal čas vyčistit dungeon a přinést slávu našemu praporu!\n\n**🗡️ Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Neúspěch se trestá smrtí. Sláva Impériu! Doufám ve vaši účast!*",
 			"fields": []
 		},
 		"weekend_dung": {
@@ -35,7 +35,7 @@
 			},
 			"title": "⚔️ Víkendová výprava do cechovního dungeonu",
 			"color": 10027008,
-			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVíkendová očista dungeonu je tady. Připravte si zbraně, nepřítel sčítá naše slabiny!\n\n🗡️** Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Za vítězstvím nebo za smrtí! Doufám ve vaši účast!*\n\u200b",
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVíkendová očista dungeonu je tady. Připravte si zbraně, nepřítel sčítá naše slabiny!\n\n🗡️** Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Za vítězstvím nebo za smrtí! Doufám ve vaši účast!*",
 			"fields": []
 		},
 		"audit": {
@@ -46,7 +46,7 @@
 			},
 			"title": "📅 Uzavírka týdenního auditu",
 			"color": 3447003,
-			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nBlíží se konec týdne a s ním i pravidelná kontrola vašich zásluh. Zkontrolujte si své statistiky včas!\n\n⌛** Audit se uzavírá:** [TIME]\n\n**POZOR:** Při nesplnění podmínek auditu budeš pokutován dle cechovních stanov!\n\u200b",
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nBlíží se konec týdne a s ním i pravidelná kontrola vašich zásluh. Zkontrolujte si plnění požadavků včas:\n[REQUIREMENTS]\n\n⌛** Audit se uzavírá:** [TIME]\n\n**POZOR:** Při nesplnění podmínek auditu budeš pokutován dle cechovních stanov!",
 			"fields": []
 		}
 	}
