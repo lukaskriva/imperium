@@ -30,6 +30,10 @@ export default async function handler(req, res) {
 		.set("second", 0)
 		.set("millisecond", 0);
 
+	if (eventTime.isBefore(dayjs())) {
+		eventTime = eventTime.add(1, "week");
+	}
+
 	const unixTime = eventTime.unix();
 
 	const desc = event.description
