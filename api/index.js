@@ -10,6 +10,7 @@ export default async function handler(req, res) {
 	const { id, key } = req.query;
 	const event = config.embeds[id];
 	const roleToMention = process.env.DISCORD_ROLE_ID;
+	const channelToMention = process.env.DISCORD_CHANNEL_ID;
 
 	if (!key || key !== process.env.API_KEY)
 		return res.status(401).send("Access denied.");
@@ -29,19 +30,14 @@ export default async function handler(req, res) {
 		.set("second", 0)
 		.set("millisecond", 0);
 
-	if (eventTime.isBefore(dayjs())) {
-		eventTime =
-			event.startTime.day !== undefined
-				? eventTime.add(1, "week")
-				: eventTime.add(1, "day");
-	}
-
 	const unixTime = eventTime.unix();
 
-	const desc = event.description.replace(
-		"[TIME]",
-		id === "audit" ? `<t:${unixTime}:F>` : `<t:${unixTime}:R>`,
-	);
+	const desc = event.description
+		.replace(
+			"[TIME]",
+			id === "audit" ? `<t:${unixTime}:F>` : `<t:${unixTime}:R>`,
+		)
+		.replace("[REQUIREMENTS]", `<#${channelToMention}>`);
 
 	try {
 		const discordResponse = await fetch(process.env.DISCORD_WEBHOOK_URL, {
@@ -58,7 +54,6 @@ export default async function handler(req, res) {
 						title: event.title,
 						description: desc,
 						color: event.color,
-						footer: config.botDefaults.footer,
 					},
 				],
 			}),
