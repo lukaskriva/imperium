@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
 	const unixTime = eventTime.unix();
 
-	const desc = event.description.replace("[TIME]", `<t:${unixTime}:R>`);
+	const desc = event.description.replace("[TIME]", `<t:${unixTime}:F> (<t:${unixTime}:R>)`);
 
 	try {
 		const discordResponse = await fetch(process.env.DISCORD_WEBHOOK_URL, {
