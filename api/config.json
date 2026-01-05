@@ -1,0 +1,53 @@
+{
+	"botDefaults": {
+		"username": "Imperium",
+		"avatar_url": "https://cdn.discordapp.com/icons/1294069890684157952/afee3429fbe98e8a97f82f0c35bd124b.webp",
+		"footer": {
+			"icon_url": "https://cdn.discordapp.com/avatars/284032252655173635/0b49d8986b646d4ebb4ed2d1a51c006f.webp",
+			"text": "Blegh"
+		}
+	},
+	"embeds": {
+		"wb": {
+			"startTime": {
+				"hour": 20,
+				"minute": 0
+			},
+			"title": "🛡️ Obrana vesnice před cechovním worldbossem",
+			"color": 15844367,
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVůdce žádá vaši krev a odvahu! Nastal čas ochránit naší vesnici od té prašivé havěti.\n\n🗡️** Očekávaný čas střetu:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n❌ *Neustupujte ani o krok! Za vůdce a za domov! Doufám ve vaši účast!*\n\u200b",
+			"fields": []
+		},
+		"week_dung": {
+			"startTime": {
+				"hour": 18,
+				"minute": 20
+			},
+			"title": "⚔️ Týdenní výprava do cechovního dungeonu",
+			"color": 10027008,
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nStíny v hlubinách se opět prodlužují. Nastal čas vyčistit dungeon a přinést slávu našemu praporu!\n\n**🗡️ Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Neúspěch se trestá smrtí. Sláva Impériu! Doufám ve vaši účast!*\n\u200b",
+			"fields": []
+		},
+		"weekend_dung": {
+			"startTime": {
+				"hour": 21,
+				"minute": 10
+			},
+			"title": "⚔️ Víkendová výprava do cechovního dungeonu",
+			"color": 10027008,
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nVíkendová očista dungeonu je tady. Připravte si zbraně, nepřítel sčítá naše slabiny!\n\n🗡️** Vyrážíme v plné polní:** [TIME]\n📍** Místo:** Cechovní vesnice\n\n💀 *Za vítězstvím nebo za smrtí! Doufám ve vaši účast!*\n\u200b",
+			"fields": []
+		},
+		"audit": {
+			"startTime": {
+				"day": 0,
+				"hour": 20,
+				"minute": 0
+			},
+			"title": "📅 Uzavírka týdenního auditu",
+			"color": 3447003,
+			"description": "\u200b\n**Věrní bojovníci Impéria!**\n\nBlíží se konec týdne a s ním i pravidelná kontrola vašich zásluh. Zkontrolujte si své statistiky včas!\n\n⌛** Audit se uzavírá:** [TIME]\n\n**POZOR:** Při nesplnění podmínek auditu budeš pokutován dle cechovních stanov!\n\u200b",
+			"fields": []
+		}
+	}
+}
