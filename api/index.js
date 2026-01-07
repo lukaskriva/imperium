@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 	if (!key || key !== process.env.API_KEY)
 		return res.status(401).send("Access denied.");
 
-	if (!event) return res.status(404).send(`Event with ${event} not found.`);
+	if (!event) return res.status(404).send(`Event with ${id} not found.`);
 
 	let eventTime = dayjs().tz("Europe/Prague");
 
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 	const desc = event.description
 		.replace(
 			"[TIME]",
-			id === "audit" ? `<t:${unixTime}:F>` : `<t:${unixTime}:R>`,
+			id === "audit" ? `<t:${unixTime}:F>` : `<t:${unixTime}:R> (v <t:${unixTime}:t>)`,
 		)
 		.replace("[REQUIREMENTS]", `<#${channelToMention}>`);
 
@@ -67,6 +67,6 @@ export default async function handler(req, res) {
 		}
 		return res.status(200).send("Odesláno");
 	} catch (err) {
-		res.status(500).send(err.message, "Discord API error..");
+		res.status(500).send(err.message);
 	}
 }
