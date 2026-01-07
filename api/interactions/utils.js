@@ -46,7 +46,7 @@ export function createSelectionEmbed(userIds = [], isCancelled = false, startTim
                 inline: false
             }],
             color: 0x5865F2,
-            thumbnail: { url: "https://i.imgur.com/Y3a94k0.png" }
+            image: { url: "https://emtgen2-wiki-git-main-iportoks-projects.vercel.app/imgs/boss_12.png" }
         }],
         components: [{
             type: 1,
@@ -65,5 +65,6 @@ export function createSelectionEmbed(userIds = [], isCancelled = false, startTim
         }]
     }
 }
+
 
 
