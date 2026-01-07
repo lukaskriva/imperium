@@ -30,7 +30,7 @@ export function createSelectionEmbed(userIds = [], isCancelled = false, startTim
 
 
     const mentionsString = mentionsList.join('\n');
-    const startTimeUnix = `<t:${startTime}:R>`
+    const startTimeUnix = `<t:${startTime}:t>`
 
     const dataPayload = `${userIds.join(',')}:${startTime}`;
 
