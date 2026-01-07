@@ -46,7 +46,7 @@ export function createSelectionEmbed(userIds = [], isCancelled = false, startTim
                 inline: false
             }],
             color: 0x5865F2,
-            thumbnail: { url: "https://i.imgur.com/SOIH6bK.png" }
+            image: { url: "https://i.imgur.com/Y3a94k0.png" }
         }],
         components: [{
             type: 1,
