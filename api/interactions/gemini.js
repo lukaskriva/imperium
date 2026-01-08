@@ -4,7 +4,7 @@ import wikiData from './wikiData.json' with { type: 'json' };
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function aiQuery(interaction, userPrompt) {
-  const token = interaction.token.replace(/^\/|\/$/g, '');
+  const token = interaction.token;
   const hookUrl =
     `https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`;
 
@@ -23,6 +23,8 @@ export async function aiQuery(interaction, userPrompt) {
 
     let aiResponse = response.text;
     if (aiResponse.length > 4000) aiResponse = aiResponse.slice(0, 3997) + '...';
+
+    console.log(aiResponse);
 
     await fetch(hookUrl, {
       method: 'PATCH',
