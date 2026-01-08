@@ -4,45 +4,43 @@ import wikiData from './wikiData.json' with { type: 'json' };
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function aiQuery(interaction, userPrompt) {
-    const token = interaction.token;
-    try {
+  const token = interaction.token.replace(/^\/|\/$/g, '');
+  const hookUrl =
+    `https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`;
 
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: [
-                {
-                    role: 'user',
-                    parts: [{ text: `Jsi herní průvodce. Uživatel se tě ptá na: ${userPrompt}. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.` }],
-                },
-            ],
-        });
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: [{
+        role: 'user',
+        parts: [{
+          text: `Jsi herní průvodce. Uživatel se tě ptá na: ${userPrompt}. ` +
+                `Tvé znalosti jsou: ${JSON.stringify(wikiData)}. ` +
+                `Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.`
+        }]
+      }]
+    });
 
-        let aiResponse = response.text;
+    let aiResponse = response.candidates?.[0]?.content?.parts?.[0]?.text ?? 'Bez odpovědi';
+    if (aiResponse.length > 4000) aiResponse = aiResponse.slice(0, 3997) + '...';
 
-        if (aiResponse.length > 4000) {
-            aiResponse = `${aiResponse.substring(0, 3997)}...`;
-        }
-
-        await fetch(`https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                embeds: [{
-                    title: "Herní průvodce",
-                    description: aiResponse,
-                    color: 0x00ffff,
-                }]
-            })
-
-        })
-    } catch (err) {
-        console.error(`Gemini error: ${err}`);
-        await fetch(`https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                content: "❌ Omlouvám se, ale zkus to znovu později..."
-            })
-        })
-    }
+    await fetch(hookUrl, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        embeds: [{
+          title: 'Herní průvodce',
+          description: aiResponse,
+          color: 0x00ffff
+        }]
+      })
+    });
+  } catch (err) {
+    console.error('Gemini error:', err);
+    await fetch(hookUrl, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: '❌ Omlouvám se, ale zkus to znovu později...' })
+    });
+  }
 }
