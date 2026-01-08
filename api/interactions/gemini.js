@@ -49,7 +49,7 @@ export async function aiQuery(interaction, userPrompt) {
             body: JSON.stringify({
                 embeds: [{
                     title: "Herní průvodce",
-                    description: aiResponse.text(),
+                    description: aiResponse.text,
                     color: 0x00ffff,
                 }]
             })
