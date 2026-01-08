@@ -12,12 +12,8 @@ export async function handleInteraction(interaction) {
         // Začátek kodu pro ai interakci
         if (data.name === "wiki") {
             const userPrompt = data.options.find(opt => opt.name === "dotaz").value;
-
             const initialResponse = { type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE };
-      
-            await aiQuery(interaction, userPrompt);
-     
-
+            aiQuery(interaction, userPrompt);
             return initialResponse;
         }
         // Konec kódu pro ai interakci
@@ -25,7 +21,6 @@ export async function handleInteraction(interaction) {
         if (data.name === "drak") {
             const minutes = data.options.find((opt) => opt.name === "cas").value;
             const startTime = dayjs().add(minutes, "minute").unix();
-
             return {
                 type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
                 data: {
