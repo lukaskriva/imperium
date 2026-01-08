@@ -9,8 +9,8 @@ export async function aiQuery(interaction, userPrompt) {
   console.log(`[AI-DEBUG] Startuji dotaz pro: "${userPrompt}"`);
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash', 
-      systemInstruction: `Jsi herní průvodce. Tvé znalosti o hře jsou: ${JSON.stringify(wikiData)}. Odpovídej stručně, maximálně 2000 znaků. Používej češtinu.`,
+      model: 'gemini-2.5-flash', 
+      systemInstruction: `Jsi herní průvodce. Tvé znalosti o hře jsou: ${wikiData}. Odpovídej stručně, maximálně 2000 znaků. Používej češtinu.`,
       contents: [{
         role: 'user',
         parts: [{ text: userPrompt }]
