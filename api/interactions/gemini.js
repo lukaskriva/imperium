@@ -21,7 +21,7 @@ export async function aiQuery(interaction, userPrompt) {
       }]
     });
 
-    let aiResponse = response.candidates?.[0]?.content?.parts?.[0]?.text ?? 'Bez odpovědi';
+    let aiResponse = response.text;
     if (aiResponse.length > 4000) aiResponse = aiResponse.slice(0, 3997) + '...';
 
     await fetch(hookUrl, {
