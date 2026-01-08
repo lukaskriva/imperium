@@ -12,9 +12,10 @@ export async function handleInteraction(interaction) {
         // Začátek kodu pro ai interakci
         if (data.name === "wiki") {
             const userPrompt = data.options.find(opt => opt.name === "dotaz").value;
-            const initialResponse = { type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE };
-            await aiQuery(interaction, userPrompt);
-            return initialResponse;
+            await aiQuery(interaction, userPrompt).catch(err => console.error("Pozadí selhalo:", err));
+            return { 
+                type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE 
+            };
         }
         // Konec kódu pro ai interakci
 
