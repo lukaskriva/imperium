@@ -20,7 +20,7 @@ export async function aiQuery(interaction, userPrompt) {
             },
         });
 
-        let aiResponse = response.text();
+        let aiResponse = response.candidates?.[0]?.content?.parts?.[0]?.text || "Nepodařilo se mi získat odpověď.";
 
         if (aiResponse.length > 4000) {
             aiResponse = `${aiResponse.substring(0, 3997)}...`;
