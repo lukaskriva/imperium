@@ -1,0 +1,44 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import wikiData from './wikiData.json' with { type: 'json' };
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+export async function aiQuery(interaction, userPrompt) {
+    const token = interaction.token;
+    try {
+
+        const systemInstruction = `
+        Jsi herní průvodce. Tvé znalosti jsou: ${wikiData}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.
+        `;
+
+        const result = await model.generateContent([systemInstruction, userPrompt]);
+        let aiResponse = result.response.text();
+
+        if (aiResponse.length > 4000) {
+            aiResponse = `${aiResponse.substring(0, 3997)}...`;
+        }
+
+        await fetch(`https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                embeds: [{
+                    title: "Herní průvodce",
+                    description: aiResponse,
+                    color: 0x00ffff,
+                }]
+            })
+
+        })
+    } catch (err) {
+        console.error(`Gemini error: ${err}`);
+        await fetch(`https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                content: "❌ Omlouvám se, ale zkus to znovu později..."
+            })
+        })
+    }
+}
