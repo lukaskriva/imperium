@@ -1,19 +1,26 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from '@google/genai';
 import wikiData from './wikiData.json' with { type: 'json' };
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function aiQuery(interaction, userPrompt) {
     const token = interaction.token;
     try {
 
-        const systemInstruction = `
-        Jsi herní průvodce. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.
-        `;
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: [
+                {
+                    role: 'user',
+                    parts: [{ text: userPrompt }],
+                },
+            ],
+            config: {
+                systemInstruction: `Jsi herní průvodce. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.`
+            },
+        });
 
-        const result = await model.generateContent([systemInstruction, userPrompt]);
-        let aiResponse = result.response.text();
+        let aiResponse = response.text();
 
         if (aiResponse.length > 4000) {
             aiResponse = `${aiResponse.substring(0, 3997)}...`;
