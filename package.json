@@ -4,7 +4,7 @@
 	"type": "module",
 	"main": "index.js",
 	"dependencies": {
-		"@google/generative-ai": "^0.24.1",
+		"@google/genai": "^1.34.0",
 		"dayjs": "^1.11.10",
 		"discord-interactions": "^4.1.0"
 	},
