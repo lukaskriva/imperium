@@ -12,15 +12,12 @@ export async function aiQuery(interaction, userPrompt) {
             contents: [
                 {
                     role: 'user',
-                    parts: [{ text: userPrompt }],
+                    parts: [{ text: `Jsi herní průvodce. Uživatel se tě ptá na: ${userPrompt}. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.` }],
                 },
             ],
-            config: {
-                systemInstruction: `Jsi herní průvodce. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.`
-            },
         });
 
-        let aiResponse = response.candidates?.[0]?.content?.parts?.[0]?.text || "Nepodařilo se mi získat odpověď.";
+        let aiResponse = response.text;
 
         if (aiResponse.length > 4000) {
             aiResponse = `${aiResponse.substring(0, 3997)}...`;
