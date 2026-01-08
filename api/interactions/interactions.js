@@ -14,10 +14,9 @@ export async function handleInteraction(interaction) {
             const userPrompt = data.options.find(opt => opt.name === "dotaz").value;
 
             const initialResponse = { type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE };
-            
-            await Promise.all([
-                aiQuery(interaction, userPrompt)
-            ]);
+      
+            aiQuery(interaction, userPrompt);
+     
 
             return initialResponse;
         }
