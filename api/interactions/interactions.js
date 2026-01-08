@@ -15,7 +15,7 @@ export async function handleInteraction(interaction) {
 
             const initialResponse = { type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE };
       
-            aiQuery(interaction, userPrompt);
+            await aiQuery(interaction, userPrompt);
      
 
             return initialResponse;
