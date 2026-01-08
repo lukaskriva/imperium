@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { InteractionResponseType, InteractionType } from "discord-interactions";
+import { aiQuery } from "./gemini.js"; // interakce ai
 import { createSelectionEmbed, MAX_MEMBERS } from "./utils.js";
 
 const roleToMention = process.env.DISCORD_ROLE_ID;
