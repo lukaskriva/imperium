@@ -8,16 +8,16 @@ export async function aiQuery(interaction, userPrompt) {
     try {
 
         const aiResponse = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-2.0-flash',
             // systemInstruction: `Jsi herní průvodce. Tvé znalosti o hře jsou: ${wikiData}. Odpovídej stručně, maximálně 2000 znaků. Používej češtinu.`,
             contents: [
                 {
                     role: 'user',
-                    parts: [{ userPrompt }],
+                    parts: [{ text: userPrompt }],
                 },
             ],
         });
-        console.log(aiResponse);
+
         await fetch(`https://discord.com/api/v10/webhooks/${process.env.DISCORD_APP_ID}/${token}/messages/@original`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
