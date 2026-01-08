@@ -9,7 +9,7 @@ export async function aiQuery(interaction, userPrompt) {
     try {
 
         const systemInstruction = `
-        Jsi herní průvodce. Tvé znalosti jsou: ${wikiData}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.
+        Jsi herní průvodce. Tvé znalosti jsou: ${JSON.stringify(wikiData)}. Vždy odpovídáš krátce a k věci. Maximálně 2000 znaků.
         `;
 
         const result = await model.generateContent([systemInstruction, userPrompt]);
